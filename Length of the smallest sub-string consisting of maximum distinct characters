@@ -1,0 +1,5 @@
+https://www.geeksforgeeks.org/dsa/length-smallest-sub-string-consisting-maximum-distinct-characters/
+
+we find number of unique elements in string, let say 'm'
+
+then we find the length of minimum string containing these m elements. 
