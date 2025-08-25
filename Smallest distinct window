@@ -1,0 +1,49 @@
+https://www.geeksforgeeks.org/problems/smallest-distant-window3132/1
+
+class Solution {
+  public:
+    int findSubString(string& s) {
+        int n = s.size();
+        unordered_map<char,int> mp;
+        for(int i=0 ; i<n ; i++){
+            mp[s[i]]++;
+        }
+        for(auto it=mp.begin() ; it!= mp.end() ; it++){
+            //cout<<it->first<< " " <<it->second<<endl;
+            it->second = 1;
+        }
+        for(auto it=mp.begin() ; it!= mp.end() ; it++){
+            //cout<<it->first<< " " <<it->second<<endl;
+            //it->second = 1;
+        }
+        int count = mp.size();
+        int temp=count;
+        int i=0,j=0, ans = INT_MAX;
+        while(j<n) {
+            if(temp > 0 ){
+                mp[s[j]]--;
+                if(mp[s[j]]==0){
+                    temp--;
+                }
+                j++;
+            }
+            if(temp==0){
+                ans = min(ans,j-i);
+                while(temp==0){
+                    mp[s[i]]++;
+                    if(mp[s[i]]>0){
+                        temp++;
+                        i++;
+                        break;
+                    }
+                    i++;
+                    ans = min(ans,j-i);
+                    
+                }
+            }
+            //cout<<i<<" "<<j<<" "<<temp<<" "<<ans<<endl;
+            
+        }
+        return ans;
+    }
+};
